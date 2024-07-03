@@ -74,8 +74,8 @@ export const NavLinksList = ({
       justifyClass = "justify-start";
   }
   return (
-    <div className={`w-2/4 flex items-center ${justifyClass}`}>
-      <ul className="flex gap-2 lg:gap-4">{children}</ul>
+    <div className={`w-2/4 flex items-center `}>
+      <ul className={`flex gap-2 lg:gap-4 ${justify}`}>{children}</ul>
     </div>
   );
 };

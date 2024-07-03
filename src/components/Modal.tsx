@@ -1,7 +1,9 @@
 import Button from "./Button";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, createContext, useContext } from "react";
 import { ModalProps } from "../Props/Modal";
 import { IoClose } from "react-icons/io5";
+const ModalContext = createContext<boolean>(true);
+
 const Modal = ({ ...props }: ModalProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(
     (props.isOpen && props.isOpen) || false,
@@ -21,6 +23,12 @@ const Modal = ({ ...props }: ModalProps) => {
         document.body.style.overflow = "auto";
       }
     });
+    document?.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" || e.key === "Esc") {
+        setIsOpen(false);
+        document.body.style.overflow = "auto";
+      }
+    });
   }, [modalRef, isOpen]);
   let bgVariantClasses = "bg-black   modal-bg";
   switch (props.bgVariant) {
@@ -31,15 +39,8 @@ const Modal = ({ ...props }: ModalProps) => {
       bgVariantClasses = `bg-transparent`;
       break;
   }
-  let bgContentClasses = "bg-background";
-  switch (props.bgContent) {
-    case "background":
-      bgContentClasses = `bg-background`;
-      break;
-    case "foreground":
-      bgContentClasses = `bg-foreground`;
-      break;
-  }
+  let bgContentClasses = "bg-light-background dark:bg-dark-background";
+
   let rounded = "rounded-xl";
   switch (props.roundedContent) {
     case "full":
@@ -60,21 +61,63 @@ const Modal = ({ ...props }: ModalProps) => {
   }
   const CloseButton = () => {
     return (
-      <div>
-        <button
-          onClick={() => setIsOpen(false)}
-          className="absolute top-1 right-1 hover:bg-danger hover:text-white transition-all duration-100 p-1 rounded-full"
-        >
-          <IoClose className="size-5" />
-        </button>
-      </div>
+      <ModalContext.Provider value={true}>
+        <div className="absolute top-1 right-1">
+          <button
+            onClick={() => setIsOpen(false)}
+            className=" hover:bg-danger hover:bg-opacity-50 hover:text-white transition-all duration-100 p-0.5 rounded-full"
+          >
+            <IoClose className="size-5" />
+          </button>
+        </div>
+      </ModalContext.Provider>
     );
   };
-  let borderClasses = `border-[3px] ${props.bgContent && props.bgContent == "background" ? "border-background" : "border-foreground"}`;
+
+  let borderColor = "border-light-foreground dark:border-dark-foreground";
+  switch (props.borderColor) {
+    case "primary":
+      borderColor = "border-primary";
+      break;
+    case "secondary":
+      borderColor = "border-secondary";
+      break;
+    case "success":
+      borderColor = "border-success";
+      break;
+    case "danger":
+      borderColor = "border-danger";
+      break;
+    case "warning":
+      borderColor = "border-warning";
+      break;
+  }
+  let animationClasses = "from-fade";
+  switch (props.contentAnimation) {
+    case "fade":
+      animationClasses = "from-fade";
+      break;
+    case "left":
+      animationClasses = "from-left";
+      break;
+    case "right":
+      animationClasses = "from-right";
+      break;
+    case "top":
+      animationClasses = "from-top";
+      break;
+    case "bottom":
+      animationClasses = "from-bottom";
+      break;
+    case "none":
+      animationClasses = "";
+      break;
+  }
+  let borderClasses = `border-[2px] ${borderColor}`;
   let containerScrollClasses: string = "overflow-y-auto max-h-full";
 
   const containerClasses = `flex items-center justify-center fixed top-0 left-0 w-full py-6 min-h-[100dvh] max-h-[100dvh] z-50  h-full ${bgVariantClasses} ${props.scrollType && props.scrollType == "outside" ? containerScrollClasses : ""} `;
-  const contentClasses = `relative modal-content px-6 pb-2 flex flex-col max-h-full max-w-xl max-w-sm  mx-auto ${bgContentClasses} ${rounded} ${props.borderedContent ? borderClasses : ""}`;
+  const contentClasses = ` relative   px-7  flex flex-col max-h-full max-w-xl  min-w-[300px] ${animationClasses}  ${bgContentClasses} ${rounded} ${props.borderedContent ? borderClasses : ""}`;
   return (
     <>
       <Button
@@ -85,23 +128,14 @@ const Modal = ({ ...props }: ModalProps) => {
         textColor={props.btnTextColor}
         onClick={() => setIsOpen(true)}
       >
-        Modal
+        {props.label}
       </Button>
       {isOpen && (
         <div ref={modalRef} className={` ${containerClasses}`}>
-          <div className="w-full " ref={modalRef2}>
-            <div className={`${contentClasses}`}>
-              <CloseButton />
-              {props.title && (
-                <div className="py-2 flex justify-between border-opacity-50">
-                  <h2 className="text-xl font-semibold w-fit ">
-                    {props.title}
-                  </h2>
-                </div>
-              )}
-              <div className="max-h-full overflow-y-auto flex flex-col">
-                {props.children}
-              </div>
+          <div className={`${contentClasses}`}>
+            <CloseButton />
+            <div className=" overflow-y-auto max-h-[90dvh] flex flex-col py-4">
+              {props.children}
             </div>
           </div>
         </div>
@@ -110,3 +144,24 @@ const Modal = ({ ...props }: ModalProps) => {
   );
 };
 export default Modal;
+
+export const ModalHeader = ({ children }: { children?: React.ReactNode }) => {
+  const context = useContext(ModalContext);
+  if (!context) throw new Error("ModalHeader must be used inside Modal");
+
+  return (
+    <div className="py-1">
+      <h2 className="text-xl font-semibold w-fit ">{children}</h2>
+    </div>
+  );
+};
+
+export const ModalContent = ({ children }: { children?: React.ReactNode }) => {
+  const context = useContext(ModalContext);
+  if (!context) throw new Error("ModalContent must be used inside Modal");
+  return (
+    <div className="max-h-full overflow-y-auto flex flex-col py-4">
+      {children}
+    </div>
+  );
+};

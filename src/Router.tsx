@@ -25,6 +25,7 @@ const Nav = () => {
         </NavBrand>
         <NavLinksList>
           <Link href="buttons">Buttons</Link>
+          <Link href="modals">Modals</Link>
         </NavLinksList>
         <NavAction>
           <Button variant="ghost">Contacter</Button>
@@ -37,6 +38,7 @@ const Nav = () => {
 
 import ButtonPage from "./Pages/ButtonPage";
 import Button from "./components/Button";
+import ModalPage from "./Pages/ModalsPage";
 
 const Router = createBrowserRouter(
   createRoutesFromElements([
@@ -50,6 +52,7 @@ const Router = createBrowserRouter(
         }
       />
       <Route path="/buttons" element={<ButtonPage />} />,
+      <Route path="/modals" element={<ModalPage />} />,
     </Route>,
     <Route path="/nested" element={<NestedPage />} />,
   ]),
