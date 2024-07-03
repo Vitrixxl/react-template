@@ -284,9 +284,21 @@ export default function ButtonPage() {
           </div>
         </div>
       </div>
-      <Button color="secondary" onClick={() => navigate("/")}>
-        Return to the home page
-      </Button>
+      <div className="flex flex-col gap-4">
+        <h1 className="text-xl ">
+          Feel free to copy and try by yourself the buttons in the{" "}
+          <span className="text-primary font-semibold italic">ButtonPage</span>
+        </h1>
+        <div className="flex gap-4">
+          <code>test</code>
+        </div>
+      </div>
+      <div className="w-full flex justify-between">
+        <Button color="secondary" onClick={() => navigate("/")}>
+          {"<-"}Modals
+        </Button>
+        <Button onClick={() => navigate("/")}>{"Modals ->"}</Button>
+      </div>
     </div>
   );
 }

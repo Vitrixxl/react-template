@@ -30,7 +30,7 @@
 .modal-content {
   animation: modal-content-animation 0.3s ease-in-out forwards;
 }
-@keyframes modal-content-animation {
+@keyframes from-top {
   from {
     opacity: 0;
     transform: translateY(-100%);
@@ -39,4 +39,57 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+@keyframes from-left {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes from-right {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes from-bottom {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes from-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1 !important;
+  }
+}
+.from-fade {
+  animation: from-fade 0.4s ease-out forwards;
+}
+.from-left {
+  animation: from-left 0.5s ease-out forwards;
+}
+.from-right {
+  animation: from-right 0.5s ease-out forwards;
+}
+.from-top {
+  animation: from-top 0.5s ease-out forwards;
+}
+.from-bottom {
+  animation: from-bottom 0.5s ease-out forwards;
 }

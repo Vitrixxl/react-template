@@ -79,6 +79,7 @@ export default {
         "dark-default": "#484848",
         Wbg: "#f8f8f8",
         Dbg: "#252525",
+
         foreground: {
           DEFAULT: "#333333",
         },

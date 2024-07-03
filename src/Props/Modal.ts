@@ -12,9 +12,9 @@ export type ModalProps = {
   onOpen?: () => void;
   isDisabled?: boolean;
   isLoading?: boolean;
-  bgContent?: "background" | "foreground";
   borderedContent?: boolean;
   roundedContent?: "none" | "sm" | "md" | "lg" | "full";
   scrollType?: "inside" | "outside";
-  title?: string;
+  borderColor?: "primary" | "secondary" | "success" | "danger" | "warning";
+  contentAnimation?: "fade" | "left" | "right" | "top" | "bottom" | "none";
 };
