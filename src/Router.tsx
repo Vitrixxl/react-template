@@ -26,6 +26,9 @@ const Nav = () => {
         <NavLinksList>
           <Link href="buttons">Buttons</Link>
         </NavLinksList>
+        <NavLinksList>
+          <Link href="inputs">Inputs</Link>
+        </NavLinksList>
         <NavAction>
           <Button variant="ghost">Contacter</Button>
         </NavAction>
@@ -37,6 +40,7 @@ const Nav = () => {
 
 import ButtonPage from "./Pages/ButtonPage";
 import Button from "./components/Button";
+import InputPage from "./Pages/InputPage";
 
 const Router = createBrowserRouter(
   createRoutesFromElements([
@@ -50,6 +54,7 @@ const Router = createBrowserRouter(
         }
       />
       <Route path="/buttons" element={<ButtonPage />} />,
+      <Route path="/inputs" element={<InputPage />} />,
     </Route>,
     <Route path="/nested" element={<NestedPage />} />,
   ]),

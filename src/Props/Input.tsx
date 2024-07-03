@@ -11,10 +11,11 @@ export type InputProps = {
   endContent?: React.ReactNode;
   isRequired?: boolean;
   isClearable?: boolean;
+  isInvalid?: boolean;
   labelPlacement?: "left" | "inside" | "outside-left" ;
   type?: "text" | "password" | "email" | "file";
   color?: "primary" | "secondary" | "success" | "danger" | "warning";
-  size?: "sm" | "md" | "lg";
-  variant?: "flat" | "bordered" | "underlined" | "faded";
-  rounded?: "none" | "sm" | "md" | "lg" ;
+  size?: "sm" | "md" | "lg" | "xl" | "2xl";
+  rounded?: "none"|"sm" | "md" | "lg" | "full" ;
+  variant?: "ghost" | "bordered" | "underlined" | "filled";
 };
