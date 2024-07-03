@@ -14,3 +14,29 @@
     opacity: 0;
   }
 }
+
+.bodered-filled-load:hover div {
+}
+.modal-bg {
+  background-color: rgba(0, 0, 0, 0);
+  animation: modal-bg-animation 0.3s ease-in forwards;
+}
+@keyframes modal-bg-animation {
+  to {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+}
+
+.modal-content {
+  animation: modal-content-animation 0.3s ease-in-out forwards;
+}
+@keyframes modal-content-animation {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
