@@ -76,8 +76,6 @@ export default {
         "dark-background": "#252525",
         "light-background": "#f8f8f8",
 
-        Wbg: "#f8f8f8",
-        Dbg: "#252525",
         foreground: {
           DEFAULT: "#333333",
         },
