@@ -17,5 +17,5 @@ export type InputProps = {
   color?: "primary" | "secondary" | "success" | "danger" | "warning";
   size?: "sm" | "md" | "lg" | "xl" | "2xl";
   rounded?: "none"|"sm" | "md" | "lg" | "full" ;
-  variant?: "ghost" | "bordered" | "underlined" | "filled";
+  variant?: "bordered" | "underlined" | "filled";
 };

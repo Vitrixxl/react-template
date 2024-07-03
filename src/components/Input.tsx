@@ -72,76 +72,57 @@ export default function Input({ ...props }: InputProps) {
     case "bordered":
       switch (props.size) {
         case "sm":
-          variantClasses = `py-1 px-1 bg-transparent border-2 ${borderColor} hover:!bg-gray-600 hover:!bg-opacity-20`;
+          variantClasses = `py-1 px-1 !bg-transparent border-2 ${borderColor} hover:!bg-gray-600 hover:!bg-opacity-20`;
           fontSize = "text-[14px]"
           break;
         case "md":
-          variantClasses = `py-2 px-2 bg-transparent border-2 ${borderColor}`
+          variantClasses = `py-2 px-2 !bg-transparent border-2 ${borderColor} hover:!bg-gray-600 hover:!bg-opacity-20`
           fontSize = "text-md"
           break;
         case "lg":
-          variantClasses = `py-3 px-3 bg-transparent border-2 ${borderColor}`
+          variantClasses = `py-3 px-3 !bg-transparent border-2 ${borderColor} hover:!bg-gray-600 hover:!bg-opacity-20`
           fontSize = "text-lg"
           break;
         default:
-          variantClasses = `py-2 px-2 bg-transparent border-2 ${borderColor}`;
-          fontSize = "text-md"
-      }
-      break;
-    case "ghost":
-      switch (props.size) {
-        case "sm":
-          variantClasses = "py-1 px-1 bg-opacity-40"
-          fontSize = "text-[14px]"
-          break;
-        case "md":
-          variantClasses = "py-2 px-2 bg-opacity-40"
-          fontSize = "text-md"
-          break;
-        case "lg":
-          variantClasses = "py-3 px-3 bg-opacity-40"
-          fontSize = "text-lg"
-          break;
-        default:
-          variantClasses = "py-2 px-2 bg-opacity-40";
+          variantClasses = `py-2 px-2 !bg-transparent border-2 ${borderColor} hover:!bg-gray-600 hover:!bg-opacity-20`;
           fontSize = "text-md"
       }
       break;
     case "underlined":
       switch (props.size) {
         case "sm":
-          variantClasses = "py-1 px-1 bg-opacity-40"
+          variantClasses = `py-1 px-1 !bg-transparent border-b-2 ${borderColor} rounded-none`;
           fontSize = "text-[14px]"
           break;
         case "md":
-          variantClasses = "py-2 px-2 bg-opacity-40"
+          variantClasses = `py-2 px-2 !bg-transparent border-b-2 ${borderColor} rounded-none`;
           fontSize = "text-md"
           break;
         case "lg":
-          variantClasses = "py-3 px-3 bg-opacity-40"
+          variantClasses = `py-3 px-3 !bg-transparent border-b-2 ${borderColor} rounded-none`;
           fontSize = "text-lg"
           break;
         default:
-          variantClasses = "py-2 px-2 bg-opacity-40";
+          variantClasses = `py-2 px-2 !bg-transparent border-b-2 ${borderColor} rounded-none`;
           fontSize = "text-md"
       }
       break;
     default:
       switch (props.size) {
         case "sm":
-          variantClasses = "py-1 px-1 bg-opacity-40"
+          variantClasses = `py-1 px-1 !bg-transparent border-2 ${borderColor} hover:!bg-gray-600 hover:!bg-opacity-20`;
           fontSize = "text-[14px]"
           break;
         case "md":
-          variantClasses = "py-2 px-2 bg-opacity-40"
+          variantClasses = `py-2 px-2 !bg-transparent border-2 ${borderColor} hover:!bg-gray-600 hover:!bg-opacity-20`
           fontSize = "text-md"
           break;
         case "lg":
-          variantClasses = "py-3 px-3 bg-opacity-40"
+          variantClasses = `py-3 px-3 !bg-transparent border-2 ${borderColor} hover:!bg-gray-600 hover:!bg-opacity-20`
           fontSize = "text-lg"
           break;
         default:
-          variantClasses = "py-2 px-2 bg-opacity-40";
+          variantClasses = `py-2 px-2 !bg-transparent border-2 ${borderColor} hover:!bg-gray-600 hover:!bg-opacity-20`;
           fontSize = "text-md"
       }
   }

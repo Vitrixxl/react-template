@@ -1,13 +1,98 @@
 import Input from "../components/Input";
 
-export default function  InputPage(){
-    return (
-        <div className=" w-full mt-32 flex flex-col justify-center items-center gap-4">
-            <Input errorMessage="c'est de la bite" label="Etablissement"  size="sm" variant="bordered"/>
-            <Input errorMessage="c'est de la bite" label="Etablissement" color="secondary" size="md"/>
-            <Input errorMessage="c'est de la bite" label="Etablissement" color="success" size="lg"/>
-            <Input errorMessage="c'est de la bite" label="Etablissement" color="warning" variant="filled" />
-            <Input errorMessage="c'est de la bite" label="Etablissement" color="danger" />
-        </div>
-    );
+export default function InputPage() {
+  return (
+    <div className=" w-full mt-32 flex justify-evenly">
+      <div className="flex flex-col gap-2">
+        <h1>Bordered</h1>
+        <Input
+          label="Etablissement"
+        />
+        <Input
+          label="Etablissement"
+          color="primary"
+        />
+        <Input
+          label="Etablissement"
+          color="secondary"
+        />
+        <Input
+          label="Etablissement"
+          color="success"
+        />
+        <Input
+          label="Etablissement"
+          color="warning"
+        />
+        <Input
+          label="Etablissement"
+          color="danger"
+        />
+      </div>
+      <div className="flex flex-col gap-2">
+        <h1>Filled</h1>
+        <Input
+          label="Etablissement"
+          variant="filled"
+        />
+        <Input
+          label="Etablissement"
+          color="primary"
+          variant="filled"
+        />
+        <Input
+          label="Etablissement"
+          color="secondary"
+          variant="filled"
+        />
+        <Input
+          label="Etablissement"
+          color="success"
+          variant="filled"
+        />
+        <Input
+          label="Etablissement"
+          color="warning"
+          variant="filled"
+        />
+        <Input
+          label="Etablissement"
+          color="danger"
+          variant="filled"
+        />
+      </div>
+      <div className="flex flex-col gap-2">
+        <h1>Underlined</h1>
+        <Input
+          label="Etablissement"
+          variant="underlined"
+        />
+        <Input
+          label="Etablissement"
+          color="primary"
+          variant="underlined"
+        />
+        <Input
+          label="Etablissement"
+          color="secondary"
+          variant="underlined"
+        />
+        <Input
+          label="Etablissement"
+          color="success"
+          variant="underlined"
+        />
+        <Input
+          label="Etablissement"
+          color="warning"
+          variant="underlined"
+        />
+        <Input
+          label="Etablissement"
+          color="danger"
+          variant="underlined"
+        />
+      </div>
+    </div>
+  );
 }
