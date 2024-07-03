@@ -1,8 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*"],
+  darkMode: "media",
   theme: {
     extend: {
+      maxWidth: {
+        "7xl": "80rem",
+        "8xl": "88rem",
+      },
       colors: {
         primary: {
           100: "#e6f0fc",
@@ -41,10 +46,10 @@ export default {
           DEFAULT: "#e41b25",
         },
         warning: {
-          100: "#fcf0e5",
-          200: "#fcf0e5",
-          300: "#fcf0e5",
-          400: "#fcf0e5",
+          100: "#f0ae75",
+          200: "#eda15e",
+          300: "#eb9347",
+          400: "#e88630",
           500: "#e67919",
           600: "#b25e14",
           700: "#7f430e",
@@ -65,6 +70,16 @@ export default {
           900: "#2e6322",
 
           DEFAULT: "#4DA639",
+        },
+        "dark-foreground": "#f8f8f8",
+        "light-foreground": "#252525",
+        "dark-background": "#252525",
+        "light-background": "#f8f8f8",
+
+        Wbg: "#f8f8f8",
+        Dbg: "#252525",
+        foreground: {
+          DEFAULT: "#333333",
         },
       },
     },
