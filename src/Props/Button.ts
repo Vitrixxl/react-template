@@ -4,9 +4,21 @@ export type ButtonProps = {
   className?: string;
   isDisabled?: boolean;
   type?: "button" | "submit" | "reset";
-  color?: "primary" | "secondary" | "success" | "danger" | "warning";
+  color?:
+    | "primary"
+    | "secondary"
+    | "success"
+    | "danger"
+    | "warning"
+    | "default";
   size?: "sm" | "md" | "lg";
-  variant?: "ghost" | "bordered" | "filled" | "bordered-filled";
+  variant?:
+    | "ghost"
+    | "bordered"
+    | "filled"
+    | "bordered-filled"
+    | "empty"
+    | "default";
   textColor?: "white" | "black";
   rounded?: "none" | "sm" | "md" | "lg" | "full";
   isLoading?: boolean;

@@ -1,8 +1,9 @@
+import { ButtonProps } from "./Button";
 export type DropdownProps = {
   children?: React.ReactNode;
   className?: string;
   isOpen?: boolean;
-  variant?: "bordered" | "filled";
+  variant?: "bordered" | "filled" | "ghost";
   color?: "primary" | "secondary" | "success" | "danger" | "warning";
   rounded?: boolean;
 };
