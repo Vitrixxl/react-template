@@ -38,6 +38,7 @@ export const Link = ({ ...props }: LinkProps) => {
           ? ` transition-all duration-150 ${activeClasses}`
           : ` transition-all duration-150 font-semibold ${hoverClasses}`
       }
+      onClick={props.onClick}
     >
       {children}
     </NavLink>

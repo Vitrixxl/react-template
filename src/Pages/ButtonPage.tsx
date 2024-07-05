@@ -44,6 +44,9 @@ export default function ButtonPage() {
           <Button color="danger" onClick={() => setClicked("danger")}>
             danger
           </Button>
+          <Button color="default" onClick={() => setClicked("danger")}>
+            default
+          </Button>
         </div>
       </div>
 
@@ -84,7 +87,7 @@ export default function ButtonPage() {
             variant="ghost"
           >
             danger
-          </Button>
+          </Button>{" "}
         </div>
       </div>
 
@@ -166,6 +169,38 @@ export default function ButtonPage() {
             variant="bordered"
           >
             danger
+          </Button>
+        </div>
+      </div>
+      <div className="flex flex-col gap-4">
+        <h1 className="text-xl">Empty buttons</h1>
+        <div className="flex gap-4">
+          <Button color="primary" variant="empty">
+            Large
+          </Button>
+          <Button color="secondary">Medium</Button>
+          <Button color="success">Small</Button>
+          <Button color="secondary">Medium</Button>
+          <Button color="primary">Large</Button>
+        </div>
+      </div>
+      <div className="flex flex-col gap-4">
+        <h1 className="text-xl">Empty buttons</h1>
+        <div className="flex gap-4">
+          <Button color="primary" variant="default">
+            All
+          </Button>
+          <Button color="secondary" variant="default">
+            Those
+          </Button>
+          <Button color="success" variant="default">
+            Buttons
+          </Button>
+          <Button color="secondary" variant="default">
+            Are
+          </Button>
+          <Button color="primary" variant="default">
+            Empty
           </Button>
         </div>
       </div>
@@ -297,7 +332,7 @@ export default function ButtonPage() {
         <Button color="secondary" onClick={() => navigate("/")}>
           {"<-"}Modals
         </Button>
-        <Button onClick={() => navigate("/")}>{"Modals ->"}</Button>
+        <Button onClick={() => navigate("/modals")}>{"Modals ->"}</Button>
       </div>
     </div>
   );

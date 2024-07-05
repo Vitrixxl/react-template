@@ -1,21 +1,21 @@
 import { NavProps } from "../../Props/NavBar";
 
 export default function Navbar({ ...props }: NavProps) {
-  let dispatchClasses = "w-full flex items-center mx-auto ";
+  let widthClasses = " flex items-center mx-auto ";
 
   switch (props.width) {
     case "6xl":
-      dispatchClasses += "max-w-6xl ";
+      widthClasses += "max-w-6xl ";
       break;
 
     case "7xl":
-      dispatchClasses += "max-w-7xl ";
+      widthClasses += "max-w-7xl ";
       break;
     case "8xl":
-      dispatchClasses += "max-w-8xl ";
+      widthClasses += "max-w-8xl ";
       break;
     default:
-      dispatchClasses += "max-w-6xl ";
+      widthClasses += "max-w-6xl ";
   }
   let backgroundClasses = "";
   switch (props.background) {
@@ -33,9 +33,9 @@ export default function Navbar({ ...props }: NavProps) {
   }
   return (
     <header
-      className={`w-full py-4 sticky top-0 left-0 border-b-gray-500 border-opacity-50 border-b ${backgroundClasses} `}
+      className={`w-full py-4 sticky z-50 top-0 left-0 border-b-gray-500 border-opacity-50 border-b ${backgroundClasses} `}
     >
-      <nav className={`${dispatchClasses}`}>{props.children}</nav>
+      <nav className={`${widthClasses}`}>{props.children}</nav>
     </header>
   );
 }
@@ -74,8 +74,10 @@ export const NavLinksList = ({
       justifyClass = "justify-start";
   }
   return (
-    <div className={`w-2/4 flex items-center `}>
-      <ul className={`flex gap-2 lg:gap-4 ${justify}`}>{children}</ul>
+    <div className={`w-2/4 flex items-center`}>
+      <ul className={`flex w-full items-center gap-2 lg:gap-4 ${justifyClass}`}>
+        {children}
+      </ul>
     </div>
   );
 };

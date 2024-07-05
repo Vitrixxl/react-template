@@ -8,7 +8,18 @@ const Modal = ({ ...props }: ModalProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(
     (props.isOpen && props.isOpen) || false,
   );
-
+  const close = () => {
+    if (!modalRef.current) return;
+    modalRef.current.classList.add(
+      "!opacity-0",
+      "transtion-all",
+      "duration-200",
+    );
+    setTimeout(() => {
+      setIsOpen(false);
+      document.body.style.overflow = "auto";
+    }, 200);
+  };
   const modalRef = useRef<HTMLDivElement>(null);
   const modalRef2 = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -19,14 +30,12 @@ const Modal = ({ ...props }: ModalProps) => {
 
     modalRef.current.addEventListener("click", (e) => {
       if (e.target === modalRef.current || e.target === modalRef2.current) {
-        setIsOpen(false);
-        document.body.style.overflow = "auto";
+        close();
       }
     });
     document?.addEventListener("keydown", (e) => {
       if (e.key === "Escape" || e.key === "Esc") {
-        setIsOpen(false);
-        document.body.style.overflow = "auto";
+        close();
       }
     });
   }, [modalRef, isOpen]);
@@ -114,10 +123,10 @@ const Modal = ({ ...props }: ModalProps) => {
       break;
   }
   let borderClasses = `border-[2px] ${borderColor}`;
-  let containerScrollClasses: string = "overflow-y-auto max-h-full";
+  let containerScrollClasses: string = "!overflow-y-auto !items-start";
 
   const containerClasses = `flex items-center justify-center fixed top-0 left-0 w-full py-6 min-h-[100dvh] max-h-[100dvh] z-50  h-full ${bgVariantClasses} ${props.scrollType && props.scrollType == "outside" ? containerScrollClasses : ""} `;
-  const contentClasses = ` relative   px-7  flex flex-col max-h-full max-w-xl  min-w-[300px] ${animationClasses}  ${bgContentClasses} ${rounded} ${props.borderedContent ? borderClasses : ""}`;
+  const contentClasses = ` relative   px-7  flex flex-col  max-w-xl  min-w-[300px] ${animationClasses}  ${bgContentClasses} ${rounded} ${props.borderedContent ? borderClasses : ""}`;
   return (
     <>
       <Button
@@ -131,10 +140,12 @@ const Modal = ({ ...props }: ModalProps) => {
         {props.label}
       </Button>
       {isOpen && (
-        <div ref={modalRef} className={` ${containerClasses}`}>
+        <div ref={modalRef} className={`${containerClasses}`}>
           <div className={`${contentClasses}`}>
             <CloseButton />
-            <div className=" overflow-y-auto max-h-[90dvh] flex flex-col py-4">
+            <div
+              className={`  flex flex-col py-4 ${props.scrollType && props.scrollType == "outside" ? "" : "max-h-[90dvh] overflow-y-auto "}`}
+            >
               {props.children}
             </div>
           </div>
