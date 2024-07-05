@@ -211,19 +211,23 @@ export default function Input({ ...props }: InputProps) {
       case "outside":
         switch (props.size) {
           case "sm":
-            labelPlacement = "-translate-y-full left-0 pb-[2px]";
+            labelPlacement = "-translate-y-full -translate-x-[10px] pb-[4px]";
+            translate = "";
             margin = "mt-1";
             break;
           case "md":
-            labelPlacement = "-translate-y-full left-0 pb-1";
+            labelPlacement = "-translate-y-full -translate-x-[10px] pb-[8px]";
+            translate = "";
             margin = "mt-2";
             break;
           case "lg":
-            labelPlacement = "-translate-y-full left-0 pb-[6px]";
+            labelPlacement = "-translate-y-full -translate-x-[10px] pb-[12px]";
+            translate = "";
             margin = "mt-3";
             break;
           default:
-            labelPlacement = "-translate-y-full left-0 pb-1";
+            labelPlacement = "-translate-y-full -translate-x-[10px] pb-[8px]";
+            translate = "";
             margin = "mt-2";
         }
         break;
@@ -481,6 +485,9 @@ export default function Input({ ...props }: InputProps) {
                       type={props.type || "text"}
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                         change(e);
+                        if (props.onChange) {
+                          props.onChange(e);
+                        }
                       }}
                       onFocus={() => {
                         setIsFocus(true);
@@ -520,6 +527,9 @@ export default function Input({ ...props }: InputProps) {
                       type={props.type || "text"}
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                         change(e);
+                        if (props.onChange) {
+                          props.onChange(e);
+                        }
                       }}
                       onFocus={() => {
                         setIsFocus(true);
@@ -559,6 +569,9 @@ export default function Input({ ...props }: InputProps) {
                       type={props.type || "text"}
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                         change(e);
+                        if (props.onChange) {
+                          props.onChange(e);
+                        }
                       }}
                       onFocus={() => {
                         setIsFocus(true);
@@ -595,6 +608,9 @@ export default function Input({ ...props }: InputProps) {
                       type={props.type || "text"}
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                         change(e);
+                        if (props.onChange) {
+                          props.onChange(e);
+                        }
                       }}
                       onFocus={() => {
                         setIsFocus(true);
@@ -646,6 +662,9 @@ export default function Input({ ...props }: InputProps) {
                       type={props.type || "text"}
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                         change(e);
+                        if (props.onChange) {
+                          props.onChange(e);
+                        }
                       }}
                       onFocus={() => {
                         setIsFocus(true);
@@ -685,6 +704,9 @@ export default function Input({ ...props }: InputProps) {
                       type={props.type || "text"}
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                         change(e);
+                        if (props.onChange) {
+                          props.onChange(e);
+                        }
                       }}
                       onFocus={() => {
                         setIsFocus(true);
@@ -724,6 +746,9 @@ export default function Input({ ...props }: InputProps) {
                       type={props.type || "text"}
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                         change(e);
+                        if (props.onChange) {
+                          props.onChange(e);
+                        }
                       }}
                       onFocus={() => {
                         setIsFocus(true);
@@ -760,6 +785,9 @@ export default function Input({ ...props }: InputProps) {
                       type={props.type || "text"}
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                         change(e);
+                        if (props.onChange) {
+                          props.onChange(e);
+                        }
                       }}
                       onFocus={() => {
                         setIsFocus(true);

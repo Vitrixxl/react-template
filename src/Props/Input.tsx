@@ -5,7 +5,7 @@ export type InputProps = {
   isDisabled?: boolean;
   label?: string;
   value?: string;
-  onChange?: () => void;
+  onChange?: (event:React.ChangeEvent<HTMLInputElement>) => void;
   errorMessage?: string;
   startContent?: React.ReactNode;
   endContent?: React.ReactNode;
