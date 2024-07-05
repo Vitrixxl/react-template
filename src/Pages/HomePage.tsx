@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import Button from "../components/Button";
+
 export const HomePage = () => {
   const navigate = useNavigate();
 
@@ -17,9 +17,9 @@ export const HomePage = () => {
         >
           Go to the nested route
         </Link>
-        <Button color="primary" onClick={() => navigate("/buttons")}>
+        <button color="primary" onClick={() => navigate("/buttons")}>
           Check the buttons components
-        </Button>
+        </button>
       </div>
     </>
   );
