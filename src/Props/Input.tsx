@@ -12,10 +12,10 @@ export type InputProps = {
   isRequired?: boolean;
   isClearable?: boolean;
   isInvalid?: boolean;
-  labelPlacement?: "left" | "inside" | "outside-left" ;
-  type?: "text" | "password" | "email" | "file";
+  labelPlacement?: "left" | "inside" | "outside" ;
+  type?: "text" | "password" | "file" | "date";
   color?: "primary" | "secondary" | "success" | "danger" | "warning";
   size?: "sm" | "md" | "lg" | "xl" | "2xl";
   rounded?: "none"|"sm" | "md" | "lg" | "full" ;
-  variant?: "ghost" | "bordered" | "underlined" | "filled";
+  variant?: "bordered" | "underlined" | "filled";
 };

@@ -77,6 +77,10 @@ export default {
         "light-background": "#f8f8f8",
         "light-default": "#D6D6D6",
         "dark-default": "#484848",
+        "light-placeholder": "#AAAAAA",
+        Wbg: "#f8f8f8",
+        Dbg: "#252525",
+
 
         foreground: {
           DEFAULT: "#333333",
