@@ -7,10 +7,7 @@ export default function Button({ ...props }: ButtonProps) {
     { id: number; ripple: React.ReactNode }[]
   >([]);
 
-  let px: string = "";
-  let py: string = "";
-  let fontSize: string = "text-md";
-
+  let sizeClasses = "";
   let text: string = "text-white";
   let hoverText: string = "hover:text-white";
   if (!props.color) props.color = "primary";
@@ -32,8 +29,13 @@ export default function Button({ ...props }: ButtonProps) {
   let borderedFilledClasses: string = `bg-transparent hover:bg-primary  border-primary text-primary  ${hoverText} `;
   let rippleBg = "bg-gray-100";
   let borderedLoaderClasses: string = `border-t-white border-transparent`;
+  let emptyClasses: string =
+    "!text-light-foreground dark:!text-dark-foreground";
 
   switch (props.color) {
+    case "primary":
+      emptyClasses = "!text-primary";
+      break;
     case "secondary":
       loadingClasses = `!bg-secondary  cursor-wait !text-white  !border-secondary`;
       disableClasses = `dark:!bg-opacity-50 !bg-secondary-400 dark:!text-gray-300  !border-secondary-300 dark:!border-opacity-50 cursor-not-allowed !text-white  `;
@@ -41,9 +43,8 @@ export default function Button({ ...props }: ButtonProps) {
       borderedClasses = `text-secondary border-secondary `;
       ghostClasses = `bg-secondary bg-opacity-20 text-secondary ${hoverText} hover:bg-secondary `;
       borderedFilledClasses = `bg-transparent hover:bg-secondary  border-secondary text-secondary ${hoverText}  `;
-      if (props.variant && props.variant == "bordered") {
-        rippleBg = "bg-secondary";
-      }
+
+      emptyClasses = "!text-secondary";
       break;
     case "success":
       loadingClasses = `!bg-success  cursor-wait !text-white  !border-success`;
@@ -52,9 +53,8 @@ export default function Button({ ...props }: ButtonProps) {
       ghostClasses = `bg-success bg-opacity-20 text-success ${hoverText} hover:bg-success `;
       borderedClasses = ` text-success border-success `;
       borderedFilledClasses = `bg-transparent   border-success hover:bg-success text-success  ${hoverText} `;
-      if (props.variant && props.variant == "bordered") {
-        rippleBg = "bg-secondary";
-      }
+
+      emptyClasses = "!text-success";
       break;
     case "danger":
       loadingClasses = `!bg-danger  cursor-wait !text-white  !border-danger`;
@@ -63,9 +63,8 @@ export default function Button({ ...props }: ButtonProps) {
       borderedClasses = `text-danger border-danger `;
       ghostClasses = `bg-danger bg-opacity-20 text-danger ${hoverText} hover:bg-danger `;
       borderedFilledClasses = `bg-transparent   border-danger hover:bg-danger text-danger  ${hoverText} `;
-      if (props.variant && props.variant == "bordered") {
-        rippleBg = "bg-secondary";
-      }
+
+      emptyClasses = "!text-danger";
       break;
     case "warning":
       loadingClasses = `!bg-warning  cursor-wait !text-white !border-warning`;
@@ -74,10 +73,16 @@ export default function Button({ ...props }: ButtonProps) {
       borderedClasses = ` text-warning border-warning `;
       ghostClasses = `bg-warning bg-opacity-20 text-warning ${hoverText} hover:bg-warning `;
       borderedFilledClasses = `bg-transparent  hover:bg-warning border-warning text-warning   ${hoverText} `;
-      if (props.variant && props.variant == "bordered") {
-        rippleBg = "bg-warning";
-      }
+
+      emptyClasses = "!text-warning";
       break;
+    case "default":
+      loadingClasses = `!bg-light-default  cursor-wait !text-light-foreground !border-light-default`;
+      disableClasses = `!bg-light-default-400 dark:!bg-opacity-50 !border-light-default-400 dark:!border-opacity-0 cursor-not-allowed !text-light-foreground dark:!text-gray-300 `;
+      filledClasses = `bg-light-default dark:bg-dark-default ${text} hover:bg-light-default-600 !text-light-foreground dark:!text-dark-foreground`;
+      borderedClasses = ` text-light-default border-light-default `;
+      ghostClasses = `!bg-opacity-40 dark:bg-dark-default dark:text-dark-foreground !text-opacity-50 text-light-foreground hover:!bg-opacity-100 hover:!text-opacity-100  `;
+      borderedFilledClasses = `bg-transparent  hover:bg-light-default border-light-default dark:border-dark-default text-light-default dark:text-dark-default hover:border-light-default dark:hover:border-dark-default dark:hover:bg-dark-default dark:hover:text-dark-foreground hover:text-light-foreground`;
   }
   let rounded = "rounded-md";
   switch (props.rounded) {
@@ -97,128 +102,121 @@ export default function Button({ ...props }: ButtonProps) {
       rounded = "rounded-full";
       break;
   }
-
   let variantClasses = "";
-  let loaderClasses =
-    "border-[3px] h-full aspect-square animate-spin rounded-full ";
+  let loaderClasses = ` border-[3px] h-full aspect-square animate-spin rounded-full ${borderedLoaderClasses} `;
   if (props.isLoading && props.variant == "bordered-filled")
     props.variant = "bordered";
   switch (props.variant) {
     case "bordered":
-      px = "px-4";
-      py = "py-1.5";
+      sizeClasses = "py-1.5 px-4 text-md";
       switch (props.size) {
         case "sm":
-          px = "px-2.5";
-          py = "py-1";
-          fontSize = "text-sm";
+          sizeClasses = "py-1 px-2.5 text-md";
           break;
         case "md":
-          px = "px-4";
-          py = "py-1.5";
-          fontSize = "text-md";
+          sizeClasses = "py-1.5 px-4 text-md";
           break;
         case "lg":
-          px = "px-[20px]";
-          py = "py-2";
-          fontSize = "text-lg";
+          sizeClasses = "py-2 px-[20] text-md";
           break;
       }
-      loaderClasses += ` ${borderedLoaderClasses}`;
+
       variantClasses = ` border-2 ${borderedClasses} `;
       break;
     case "ghost":
-      px = "px-[18px]";
-      py = "py-[8px]";
+      sizeClasses = "py-[8px] px-[18px] text-md";
       switch (props.size) {
         case "sm":
-          px = "px-[12px]";
-          py = "py-[6px]";
-          fontSize = "text-sm";
+          sizeClasses = "py-[6px] px-[12px] text-md";
           break;
         case "md":
-          px = "px-[18px]";
-          py = "py-[8px]";
-          fontSize = "text-md";
+          sizeClasses = "py-[8px] px-[18px] text-md";
           break;
         case "lg":
-          px = "px-[22px]";
-          py = "py-[10px]";
-          fontSize = "text-lg";
+          sizeClasses = "py-[10px] px-[22px] text-md";
           break;
       }
-      loaderClasses += ` ${borderedLoaderClasses}`;
+
       variantClasses = ` ${ghostClasses}`;
       break;
     case "filled":
-      px = "px-[18px]";
-      py = "py-[8px]";
+      sizeClasses = "py-[8px] px-[18px] text-md";
       switch (props.size) {
         case "sm":
-          px = "px-[12px]";
-          py = "py-[6px]";
-          fontSize = "text-sm";
+          sizeClasses = "py-[6px] px-[12px] text-md";
           break;
         case "md":
-          px = "px-[18px]";
-          py = "py-[8px]";
-          fontSize = "text-md";
+          sizeClasses = "py-[8px] px-[18px] text-md";
           break;
         case "lg":
-          px = "px-[22px]";
-          py = "py-[10px]";
-          fontSize = "text-lg";
+          sizeClasses = "py-[10px] px-[22px] text-md";
           break;
       }
 
-      loaderClasses += ` ${borderedLoaderClasses} `;
       variantClasses = `  ${filledClasses}`;
       break;
-
-    case "bordered-filled":
-      loaderClasses += ` ${borderedLoaderClasses}`;
-      variantClasses = `border-2 ${borderedFilledClasses}`;
-      px = "px-4";
-      py = "py-1.5";
+    case "empty":
+      sizeClasses = "py-[8px] px-[18px] text-md";
       switch (props.size) {
         case "sm":
-          px = "px-2.5";
-          py = "py-1";
-          fontSize = "text-sm";
+          sizeClasses = "py-[6px] px-[12px] text-md";
           break;
         case "md":
-          px = "px-4";
-          py = "py-1.5";
-          fontSize = "text-md";
+          sizeClasses = "py-[8px] px-[18px] text-md";
           break;
         case "lg":
-          px = "px-[20px]";
-          py = "py-2";
-          fontSize = "text-lg";
+          sizeClasses = "py-[10px] px-[22px] text-md";
+          break;
+      }
+      variantClasses = emptyClasses;
+      break;
+    case "bordered-filled":
+      variantClasses = `border-2 ${borderedFilledClasses}`;
+      sizeClasses = "py-1.5 px-4 text-md";
+      switch (props.size) {
+        case "sm":
+          sizeClasses = "py-1 px-2.5 text-md";
+          break;
+        case "md":
+          sizeClasses = "py-1.5 px-4 text-md";
+          break;
+        case "lg":
+          sizeClasses = "py-2 px-[20] text-md";
           break;
       }
       break;
-    default:
-      px = "px-[18px]";
-      py = "py-[8px]";
+    case "default":
+      sizeClasses = "py-[8px] px-[18px] text-md";
       switch (props.size) {
         case "sm":
-          px = "px-[12px]";
-          py = "py-[6px]";
-          fontSize = "text-sm";
+          sizeClasses = "py-[6px] px-[12px] text-md";
           break;
         case "md":
-          px = "px-[18px]";
-          py = "py-[8px]";
-          fontSize = "text-md";
+          sizeClasses = "py-[8px] px-[18px] text-md";
           break;
         case "lg":
-          px = "px-[22px]";
-          py = "py-[10px]";
-          fontSize = "text-lg";
+          sizeClasses = "py-[10px] px-[22px] text-md";
           break;
       }
-      variantClasses = ` ${filledClasses}`;
+      variantClasses =
+        "border-none hover:bg-light-default dark:hover:bg-dark-default text !text-light-foreground dark:!text-dark-foreground";
+      break;
+    default:
+      sizeClasses = "py-[8px] px-[18px] text-md";
+      switch (props.size) {
+        case "sm":
+          sizeClasses = "py-[6px] px-[12px] text-md";
+          break;
+        case "md":
+          sizeClasses = "py-[8px] px-[18px] text-md";
+          break;
+        case "lg":
+          sizeClasses = "py-[10px] px-[22px] text-md";
+          break;
+      }
+
+      variantClasses = `  ${filledClasses}`;
+
       break;
   }
 
@@ -239,6 +237,9 @@ export default function Button({ ...props }: ButtonProps) {
       case "warning":
         rippleBg = "bg-warning";
         break;
+      case "default":
+        rippleBg = "bg-light-default dark:bg-dark-default";
+        break;
     }
   }
   const Loader = () => {
@@ -251,10 +252,10 @@ export default function Button({ ...props }: ButtonProps) {
     );
   };
 
-  const baseClasses = `transition-all duration-150 relative overflow-hidden font-medium h-fit w-fit ${px} ${py} ${fontSize} ${rounded} ${variantClasses} ${props.isLoading ? "cursor-wait" : ""} ${props.isDisabled ? disableClasses : ""} ${props.className ? props.className : ""} ${props.isLoading ? loadingClasses : ""}`;
+  const baseClasses = `transition-all duration-150 relative overflow-hidden font-medium h-fit w-fit ${sizeClasses} ${rounded} ${variantClasses} ${props.isLoading ? "cursor-wait" : ""} ${props.isDisabled ? disableClasses : ""} ${props.className ? props.className : ""} ${props.isLoading ? loadingClasses : ""}`;
   const handleClick = (e: React.MouseEvent) => {
     const rippleEffect = () => {
-      if (!ButtonRef.current) return;
+      if (!ButtonRef.current || props.variant == "empty") return;
       const rect = ButtonRef.current.getBoundingClientRect();
       const size = Math.max(rect.width, rect.height);
       const id = Date.now();
@@ -281,7 +282,8 @@ export default function Button({ ...props }: ButtonProps) {
         );
       }, 1000);
     };
-    if (!props.isDisabled && !props.isLoading) rippleEffect();
+    if ((!props.isDisabled && !props.isLoading) || props.variant == "empty")
+      rippleEffect();
 
     if (props.onClick && !props.isDisabled && !props.isLoading) {
       props.onClick(e);
