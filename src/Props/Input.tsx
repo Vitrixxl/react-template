@@ -15,7 +15,7 @@ export type InputProps = {
   labelPlacement?: "left" | "inside" | "outside" ;
   type?: "text" | "password" | "file" | "date";
   color?: "primary" | "secondary" | "success" | "danger" | "warning";
-  size?: "sm" | "md" | "lg" | "xl" | "2xl";
+  size?: "sm" | "md" | "lg" ;
   rounded?: "none"|"sm" | "md" | "lg" | "full" ;
   variant?: "bordered" | "underlined" | "filled";
 };
