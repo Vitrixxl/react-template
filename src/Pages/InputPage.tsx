@@ -1,6 +1,20 @@
+import { useState } from "react";
 import Input from "../components/Input";
 
 export default function InputPage() {
+  const [isInvalid, setIsInvalid] = useState(false)
+  const validPassword = (e:React.ChangeEvent<HTMLInputElement>) => {
+    const regPsw = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
+    if (e.target.value != ""){
+      if (regPsw.test(e.target.value)){
+        setIsInvalid(false)
+      } else {
+        setIsInvalid(true)
+      }
+    } else {
+      setIsInvalid(false)
+    }    
+  }
   return (
     <div className=" mt-10 flex flex-col gap-10">
       <h1 className="text-5xl font-bold text-center m-6">
@@ -12,9 +26,13 @@ export default function InputPage() {
           <Input label="Etablissement" />
           <Input label="Etablissement" color="primary" />
           <Input label="Etablissement" color="secondary" />
-          <Input label="Etablissement" color="success" placeholder="Placeholder"/>
-          <Input label="Etablissement" color="warning" startContent="Start"/>
-          <Input label="Etablissement" color="danger" endContent="End"/>
+          <Input
+            label="Etablissement"
+            color="success"
+            placeholder="Placeholder"
+          />
+          <Input label="Etablissement" color="warning" startContent="Start" />
+          <Input label="Etablissement" color="danger" endContent="End" />
         </div>
         <div className="flex flex-col gap-2">
           <h1 className="text-2xl underline">Filled</h1>
@@ -39,7 +57,7 @@ export default function InputPage() {
       <div className=" w-full flex justify-evenly flex-wrap gap-y-10 gap-x-24">
         <div className="flex flex-col gap-2">
           <h1 className="text-2xl underline">Bordered</h1>
-          <Input label="Etablissement" labelPlacement="outside" />
+          <Input label="Etablissement" labelPlacement="outside" size="sm" />
           <Input
             label="Etablissement"
             color="primary"
@@ -49,21 +67,29 @@ export default function InputPage() {
             label="Etablissement"
             color="secondary"
             labelPlacement="outside"
+            size="lg"
           />
           <Input
             label="Etablissement"
             color="success"
             labelPlacement="outside"
+            type="password"
           />
           <Input
             label="Etablissement"
             color="warning"
             labelPlacement="outside"
+            type="password"
+            placeholder="rentrez votre mot de passe"
           />
           <Input
             label="Etablissement"
             color="danger"
             labelPlacement="outside"
+            type="password"
+            onChange={(e)=>{validPassword(e)}}
+            isInvalid={isInvalid}
+            errorMessage="Mot de passe trop simple"
           />
         </div>
         <div className="flex flex-col gap-2">
