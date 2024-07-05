@@ -1,92 +1,77 @@
 /** @type {import('tailwindcss').Config} */
-export default {
-  content: ["./index.html", "./src/**/*"],
-  darkMode: "media",
+module.exports = {
+  darkMode: ["class"],
+  content: [
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
+  ],
+  prefix: "",
   theme: {
-    extend: {
-      maxWidth: {
-        "7xl": "80rem",
-        "8xl": "88rem",
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
       },
+    },
+    extend: {
       colors: {
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
         primary: {
-          100: "#e6f0fc",
-          200: "#b4d1f5",
-          300: "#82b3ee",
-          400: "#5094e8",
-          500: "#1e76e1",
-          600: "#175caf",
-          700: "#11427d",
-          800: "#0a274b",
-          900: "#030d19",
-          DEFAULT: "#1e76e1",
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
-          100: "#f4eaf7",
-          200: "#dec1e8",
-          300: "#c898d8",
-          400: "#b26fc9",
-          500: "#9c46b9",
-          600: "#793690",
-          700: "#572767",
-          800: "#34173e",
-          900: "#110815",
-          DEFAULT: "#9c46b9",
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
         },
-        danger: {
-          100: "#fce6e7",
-          200: "#f6b3b6",
-          300: "#f08086",
-          400: "#ea4e55",
-          500: "#e41b25",
-          600: "#b1151d",
-          700: "#7f0f15",
-          800: "#4c090c",
-          900: "#190304",
-          DEFAULT: "#e41b25",
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
         },
-        warning: {
-          100: "#f0ae75",
-          200: "#eda15e",
-          300: "#eb9347",
-          400: "#e88630",
-          500: "#e67919",
-          600: "#b25e14",
-          700: "#7f430e",
-          800: "#4c2808",
-          900: "#190d03",
-          DEFAULT: "#e41b25",
-          DEFAULT: "#e67919",
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
         },
-        success: {
-          100: "#94c988",
-          200: "#82c074",
-          300: "#70b760",
-          400: "#5eae4c",
-          500: "#4DA639",
-          600: "#459533",
-          700: "#3d842d",
-          800: "#357427",
-          900: "#2e6322",
-
-          DEFAULT: "#4DA639",
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
         },
-        "dark-foreground": "#f8f8f8",
-        "light-foreground": "#252525",
-        "dark-background": "#252525",
-        "light-background": "#f8f8f8",
-        "light-default": "#D6D6D6",
-        "dark-default": "#484848",
-        "light-placeholder": "#AAAAAA",
-        Wbg: "#f8f8f8",
-        Dbg: "#252525",
-
-
-        foreground: {
-          DEFAULT: "#333333",
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
         },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
-  plugins: [],
-};
+  plugins: [require("tailwindcss-animate")],
+}
